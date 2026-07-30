@@ -1,4 +1,5 @@
 {
+    "Model": "Logistic Regression",
     "Accuracy": 0.7967306325515281,
     "Precision": 0.6375,
     "Recall": 0.5454545454545454,
