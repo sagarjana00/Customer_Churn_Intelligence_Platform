@@ -1,0 +1,8 @@
+{
+    "Model": "Random Forest (Tuned)",
+    "Accuracy": 0.7938877043354655,
+    "Precision": 0.6578947368421053,
+    "Recall": 0.4679144385026738,
+    "F1 Score": 0.546875,
+    "ROC-AUC": 0.8317915215016747
+}
