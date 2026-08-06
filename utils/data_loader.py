@@ -25,3 +25,7 @@ def load_best_model():
 
 def load_model_comparison():
     return pd.read_csv(RESULTS_DIR / "model_comparison.csv")
+
+
+def load_preprocessor():
+    return joblib.load(MODELS_DIR / "preprocessor.pkl")

@@ -1,10 +1,7 @@
 import streamlit as st
 
-from utils.data_loader import load_dataset
-from utils.visualization import plot_histogram
+from utils.data_loader import load_preprocessor
 
-df = load_dataset()
+preprocessor = load_preprocessor()
 
-fig = plot_histogram(df, "MonthlyCharges")
-
-st.plotly_chart(fig, use_container_width=True)
+st.write(preprocessor.feature_names_in_)
