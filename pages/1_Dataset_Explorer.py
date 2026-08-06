@@ -58,8 +58,6 @@ st.dataframe(
 
 st.divider()
 
-st.subheader("Dataset Information")
-
 info_df = pd.DataFrame({
     "Feature": df.columns,
     "Data Type": df.dtypes.astype(str).values,
@@ -67,11 +65,13 @@ info_df = pd.DataFrame({
     "Unique Values": df.nunique().values
 })
 
-st.dataframe(
-    info_df,
-    use_container_width=True,
-    hide_index=True
-)
+with st.expander("Dataset Information", expanded=False):
+    st.dataframe(
+        info_df,
+        use_container_width=True,
+        hide_index=True
+    )
+
 
 st.divider()
 
@@ -122,20 +122,20 @@ with col2:
 
 st.divider()
 
-st.subheader("Statistical Summary")
-
-st.dataframe(
-    df.describe().T,
-    use_container_width=True
-)
+with st.expander("Statistical Summary", expanded=False):
+    st.dataframe(
+        df.describe().T,
+        use_container_width=True
+    )
 
 st.divider()
 
 csv = df.to_csv(index=False).encode("utf-8")
 
 st.download_button(
-    label="Download Dataset",
+    label="📥 Download Dataset",
     data=csv,
     file_name="customer_churn_dataset.csv",
-    mime="text/csv"
+    mime="text/csv",
+    use_container_width=True
 )
