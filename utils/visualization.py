@@ -78,3 +78,30 @@ def plot_countplot(df: pd.DataFrame, feature: str):
     )
 
     return fig
+
+
+
+
+def plot_model_comparison(df, metric):
+    import plotly.express as px
+
+    fig = px.bar(
+        df.sort_values(metric, ascending=False),
+        x="Model",
+        y=metric,
+        color="Model",
+        text=metric,
+        template="plotly_white",
+        title=f"{metric} Comparison"
+    )
+
+    fig.update_traces(texttemplate="%{text:.3f}")
+
+    fig.update_layout(
+        title_x=0.5,
+        showlegend=False,
+        xaxis_title="",
+        yaxis_title=metric
+    )
+
+    return fig
