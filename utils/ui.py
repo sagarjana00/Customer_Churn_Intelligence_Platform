@@ -25,3 +25,22 @@ def hero_section(title: str, subtitle: str):
     st.markdown(f"### {subtitle}")
 
 
+
+def metric_cards(metrics):
+    cols = st.columns(len(metrics))
+
+    for col, (label, value) in zip(cols, metrics):
+        with col:
+            st.metric(label, value)
+
+
+def business_insight(text: str):
+    st.info(f"**Business Insight:** {text}")
+
+
+
+
+
+
+
+
