@@ -7,6 +7,8 @@ from utils.data_loader import (
 )
 
 from utils.prediction import predict_customer
+import shap
+import plotly.express as px
 
 st.set_page_config(
     page_title="Customer Prediction",
@@ -17,6 +19,8 @@ st.set_page_config(
 df = load_dataset()
 model = load_best_model()
 preprocessor = load_preprocessor()
+
+explainer = shap.TreeExplainer(model)
 
 st.title("🎯 Customer Churn Prediction")
 
@@ -175,34 +179,127 @@ if st.button("Predict Churn", use_container_width=True):
         input_df
     )
 
+    processed_input = preprocessor.transform(input_df)
+
+    shap_values = explainer.shap_values(processed_input)
     st.divider()
+    
+    
+    col1, col2 = st.columns(2)
 
-    st.divider()
+    with col1:
+        if prediction == 1:
+            st.error("⚠️ High Risk of Churn")
+        else:
+            st.success("✅ Customer is Likely to Stay")
 
-col1, col2 = st.columns(2)
+    with col2:
+        st.metric(
+            "Churn Probability",
+            f"{probability:.2%}"
+        )
 
-with col1:
-    if prediction == 1:
-        st.error("⚠️ High Risk of Churn")
+    st.progress(float(probability))
+
+    if probability >= 0.75:
+        st.error("Recommendation: Contact the customer immediately with a personalized retention offer.")
+
+    elif probability >= 0.50:
+        st.warning("Recommendation: Offer discounts or service upgrades to improve retention.")
+
     else:
-        st.success("✅ Customer is Likely to Stay")
+        st.success("Recommendation: The customer appears to be at low risk. Continue regular engagement.")
 
-with col2:
-    st.metric(
-        "Churn Probability",
-        f"{probability:.2%}"
+    st.subheader("Why did the model make this prediction?")
+
+    feature_names = preprocessor.get_feature_names_out()
+    feature_names = [
+        name.replace("onehot__", "")
+            .replace("num__", "")
+            .replace("_", " ")
+        for name in feature_names
+    ]
+
+    shap_df = pd.DataFrame({
+        "Feature": feature_names,
+        "SHAP Value": shap_values[0]
+    })
+
+    shap_df["Impact"] = shap_df["SHAP Value"].abs()
+
+    shap_df = shap_df.sort_values(
+        "Impact",
+        ascending=False
+    ).head(10)
+
+
+    fig = px.bar(
+        shap_df.sort_values("SHAP Value"),
+        x="SHAP Value",
+        y="Feature",
+        orientation="h",
+        title="Top Factors Influencing This Prediction"
     )
 
-st.progress(float(probability))
+    fig.add_vline(
+        x=0,
+        line_width=1
+    )
 
-if probability >= 0.75:
-    st.error("Recommendation: Contact the customer immediately with a personalized retention offer.")
+    fig.update_layout(
+        height=500,
+        xaxis_title="SHAP Impact",
+        yaxis_title="Feature",
+        showlegend=False
+    )
 
-elif probability >= 0.50:
-    st.warning("Recommendation: Offer discounts or service upgrades to improve retention.")
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
 
-else:
-    st.success("Recommendation: The customer appears to be at low risk. Continue regular engagement.")
+    st.subheader("Key Churn Drivers")
+
+    positive = shap_df[
+        shap_df["SHAP Value"] > 0
+    ].sort_values(
+        "SHAP Value",
+        ascending=False
+    )
+
+    negative = shap_df[
+        shap_df["SHAP Value"] < 0
+    ].sort_values(
+        "SHAP Value"
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("**Factors increasing churn risk**")
+
+        if not positive.empty:
+            for _, row in positive.head(5).iterrows():
+                st.write(
+                    f"{row['Feature']} "
+                    f"({row['SHAP Value']:.3f})"
+                )
+        else:
+            st.write("No major factors increasing churn risk.")
+
+    with col2:
+        st.markdown("**Factors reducing churn risk**")
+
+        if not negative.empty:
+            for _, row in negative.head(5).iterrows():
+                st.write(
+                    f"{row['Feature']} "
+                    f"({row['SHAP Value']:.3f})"
+                )
+        else:
+            st.write("No major factors reducing churn risk.")
+
+    
 
 
 
