@@ -110,3 +110,210 @@ h3 {
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
+
+
+.hero-section {
+    padding: 1.5rem 0 2rem 0;
+}
+
+.hero-content {
+    padding: 1.5rem 0;
+}
+
+.hero-badge {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.65;
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.hero-title {
+    font-size: 3.2rem !important;
+    font-weight: 750 !important;
+    line-height: 1.1 !important;
+    margin: 0 0 1.2rem 0 !important;
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 720px;
+    margin-bottom: 1rem;
+}
+
+[data-testid="stImage"] {
+    width: 100%;
+}
+
+[data-testid="stImage"] img {
+    width: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+
+.section-heading {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.section-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    margin-bottom: 0.6rem;
+}
+
+.section-heading h2 {
+    font-size: 2rem;
+    margin: 0 0 0.8rem 0;
+}
+
+.section-heading p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin: 2rem 0 2.5rem 0;
+}
+
+.feature-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 14px;
+    min-height: 180px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(128, 128, 128, 0.45);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.feature-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.feature-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+
+@media (max-width: 900px) {
+
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .hero-content {
+        padding: 1rem 0;
+    }
+
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 1.6rem;
+    }
+
+    [data-testid="stMetric"] {
+        padding: 0.75rem;
+    }
+
+}
+
+
+.stButton > button {
+    background-color: #2563eb;
+    color: white;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+    font-weight: 600;
+    min-height: 2.6rem;
+    transition: all 0.2s ease;
+}
+
+.stButton > button:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.stDownloadButton > button {
+    background-color: #2563eb;
+    color: white;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+    font-weight: 600;
+    min-height: 2.5rem;
+}
+
+.stDownloadButton > button:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+    color: white;
+}
+
+
+[data-testid="stSidebarNav"] a {
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+[data-testid="stSidebarNav"] a:hover {
+    background-color: rgba(37, 99, 235, 0.10);
+    color: #2563eb;
+}
+
+[data-testid="stSidebarNav"] a[aria-current="page"] {
+    background-color: rgba(37, 99, 235, 0.14);
+    color: #2563eb;
+    font-weight: 600;
+}
+
+
+[data-testid="stSidebarNav"] a[aria-current="page"] span {
+    color: #2563eb;
+}
