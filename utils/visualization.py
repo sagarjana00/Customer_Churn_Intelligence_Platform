@@ -1,5 +1,5 @@
-import plotly.express as px
 import pandas as pd
+import plotly.express as px
 
 
 def plot_histogram(df: pd.DataFrame, feature: str):
@@ -20,7 +20,6 @@ def plot_histogram(df: pd.DataFrame, feature: str):
     return fig
 
 
-
 def plot_boxplot(df: pd.DataFrame, feature: str):
     fig = px.box(
         df,
@@ -35,7 +34,6 @@ def plot_boxplot(df: pd.DataFrame, feature: str):
     )
 
     return fig
-
 
 
 def plot_histogram_by_churn(df: pd.DataFrame, feature: str):
@@ -58,9 +56,6 @@ def plot_histogram_by_churn(df: pd.DataFrame, feature: str):
     return fig
 
 
-
-
-
 def plot_countplot(df: pd.DataFrame, feature: str):
     fig = px.histogram(
         df,
@@ -80,13 +75,15 @@ def plot_countplot(df: pd.DataFrame, feature: str):
     return fig
 
 
-
-
-def plot_model_comparison(df, metric):
-    import plotly.express as px
-
+def plot_model_comparison(
+    df: pd.DataFrame,
+    metric: str
+):
     fig = px.bar(
-        df.sort_values(metric, ascending=False),
+        df.sort_values(
+            metric,
+            ascending=False
+        ),
         x="Model",
         y=metric,
         color="Model",
@@ -95,7 +92,9 @@ def plot_model_comparison(df, metric):
         title=f"{metric} Comparison"
     )
 
-    fig.update_traces(texttemplate="%{text:.3f}")
+    fig.update_traces(
+        texttemplate="%{text:.3f}"
+    )
 
     fig.update_layout(
         title_x=0.5,
