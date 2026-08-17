@@ -1,0 +1,112 @@
+.main {
+    padding-top: 2rem;
+}
+
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+hr {
+    margin: 1.5rem 0;
+}
+
+[data-testid="stVerticalBlock"] {
+    gap: 0.8rem;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+[data-testid="stMetric"] {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+[data-testid="stMetricValue"] {
+    font-weight: 700;
+}
+
+.stButton > button {
+    border-radius: 8px;
+    font-weight: 600;
+    min-height: 2.6rem;
+    transition: 0.2s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-1px);
+}
+
+.stDownloadButton > button {
+    border-radius: 8px;
+    font-weight: 600;
+    min-height: 2.5rem;
+}
+
+[data-testid="stSidebar"] {
+    border-right: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+[data-testid="stSidebar"] .stMarkdown {
+    line-height: 1.6;
+}
+
+[data-testid="stSidebar"] hr {
+    margin: 1rem 0;
+}
+
+[data-testid="stDataFrame"] {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+[data-testid="stFileUploader"] {
+    border: 1px dashed rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+[data-testid="stExpander"] {
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.stSelectbox,
+.stSlider,
+.stNumberInput,
+.stTextInput {
+    margin-bottom: 0.4rem;
+}
+
+[data-baseweb="select"] > div {
+    border-radius: 8px;
+}
+
+[data-baseweb="input"] {
+    border-radius: 8px;
+}
+
+[data-testid="stAlert"] {
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}

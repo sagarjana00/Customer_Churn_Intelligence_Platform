@@ -1,3 +1,5 @@
+from utils.style import load_css
+
 import streamlit as st
 
 st.set_page_config(
@@ -6,6 +8,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+load_css()
 
 st.sidebar.title("Customer Churn")
 
