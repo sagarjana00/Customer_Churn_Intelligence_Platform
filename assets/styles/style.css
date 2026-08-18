@@ -317,3 +317,12 @@ h3 {
 [data-testid="stSidebarNav"] a[aria-current="page"] span {
     color: #2563eb;
 }
+
+
+@media (max-width: 768px) {
+
+    .block-container {
+        padding-top: 5rem !important;
+    }
+
+}
