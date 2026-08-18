@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import shap
-import plotly.express as px
 
 from utils.data_loader import (
     load_dataset,
@@ -23,8 +21,6 @@ df = load_dataset()
 model = load_best_model()
 preprocessor = load_preprocessor()
 
-explainer = shap.TreeExplainer(model)
-
 
 st.html("""
 <div class="section-heading" style="text-align:left; margin-left:0;">
@@ -38,9 +34,8 @@ st.html("""
     </h1>
 
     <p>
-        Enter customer information to estimate churn probability,
-        identify the customer's risk level, and understand the
-        factors influencing the prediction.
+        Enter customer information to estimate churn probability
+        and identify the customer's risk level.
     </p>
 
 </div>
@@ -50,31 +45,17 @@ st.html("""
 st.divider()
 
 
-st.html("""
-<div class="section-heading">
+st.subheader("👤 Customer Information")
 
-    <div class="section-badge">
-        CUSTOMER PROFILE
-    </div>
-
-    <h2>
-        Customer Information
-    </h2>
-
-    <p>
-        Provide the customer's demographic and account information.
-    </p>
-
-</div>
-""")
+st.caption(
+    "Enter the customer's demographic, service, contract and billing information."
+)
 
 
-col1, col2 = st.columns(2, gap="large")
+col1, col2, col3 = st.columns(3, gap="medium")
 
 
 with col1:
-
-    st.subheader("👤 Demographics")
 
     gender = st.selectbox(
         "Gender",
@@ -103,11 +84,6 @@ with col1:
         24
     )
 
-
-with col2:
-
-    st.subheader("📱 Phone Services")
-
     phone_service = st.selectbox(
         "Phone Service",
         ["Yes", "No"]
@@ -119,34 +95,7 @@ with col2:
     )
 
 
-st.divider()
-
-
-st.html("""
-<div class="section-heading">
-
-    <div class="section-badge">
-        SERVICE USAGE
-    </div>
-
-    <h2>
-        Internet & Additional Services
-    </h2>
-
-    <p>
-        Select the services currently subscribed to by the customer.
-    </p>
-
-</div>
-""")
-
-
-col1, col2 = st.columns(2, gap="large")
-
-
-with col1:
-
-    st.subheader("🌐 Internet Services")
+with col2:
 
     internet_service = st.selectbox(
         "Internet Service",
@@ -168,11 +117,6 @@ with col1:
         ["No", "Yes", "No internet service"]
     )
 
-
-with col2:
-
-    st.subheader("🎬 Entertainment & Support")
-
     tech_support = st.selectbox(
         "Tech Support",
         ["No", "Yes", "No internet service"]
@@ -189,28 +133,7 @@ with col2:
     )
 
 
-st.divider()
-
-
-st.html("""
-<div class="section-heading">
-
-    <div class="section-badge">
-        ACCOUNT & BILLING
-    </div>
-
-    <h2>
-        Contract & Payment Information
-    </h2>
-
-</div>
-""")
-
-
-col1, col2 = st.columns(2, gap="large")
-
-
-with col1:
+with col3:
 
     contract = st.selectbox(
         "Contract",
@@ -236,9 +159,6 @@ with col1:
         ]
     )
 
-
-with col2:
-
     monthly_charges = st.slider(
         "Monthly Charges",
         float(df["MonthlyCharges"].min()),
@@ -256,29 +176,6 @@ with col2:
             ).median()
         )
     )
-
-
-st.divider()
-
-
-st.html("""
-<div class="section-heading">
-
-    <div class="section-badge">
-        PREDICTION ENGINE
-    </div>
-
-    <h2>
-        Ready to Assess Customer Risk?
-    </h2>
-
-    <p>
-        The trained machine learning model will evaluate the customer
-        profile and estimate the probability of churn.
-    </p>
-
-</div>
-""")
 
 
 input_df = pd.DataFrame({
@@ -304,6 +201,9 @@ input_df = pd.DataFrame({
 })
 
 
+st.divider()
+
+
 predict_button = st.button(
     "🎯 Predict Customer Churn",
     use_container_width=True
@@ -318,20 +218,43 @@ if predict_button:
         input_df
     )
 
-    probability = float(probability)
+    st.session_state["prediction_input"] = input_df.copy()
+    st.session_state["prediction_result"] = int(prediction)
+    st.session_state["prediction_probability"] = float(probability)
 
-    processed_input = preprocessor.transform(
-        input_df
-    )
 
-    shap_values = explainer.shap_values(
-        processed_input
-    )
+if "prediction_result" in st.session_state:
 
-    if isinstance(shap_values, list):
-        shap_values = shap_values[-1]
+    prediction = st.session_state["prediction_result"]
+    probability = st.session_state["prediction_probability"]
 
-    shap_values = shap_values[0]
+
+    if probability >= 0.75:
+
+        risk_level = "High Risk"
+
+        risk_message = (
+            "This customer has a high likelihood of churning "
+            "and should be prioritized for immediate retention action."
+        )
+
+    elif probability >= 0.50:
+
+        risk_level = "Medium Risk"
+
+        risk_message = (
+            "This customer shows meaningful churn risk "
+            "and should receive proactive engagement."
+        )
+
+    else:
+
+        risk_level = "Low Risk"
+
+        risk_message = (
+            "This customer currently shows a relatively low "
+            "likelihood of churn."
+        )
 
 
     st.divider()
@@ -352,41 +275,19 @@ if predict_button:
     """)
 
 
-    if probability >= 0.75:
-
-        risk_level = "High Risk"
-        risk_message = (
-            "This customer has a high likelihood of churning "
-            "and should be prioritized for immediate retention action."
-        )
-
-    elif probability >= 0.50:
-
-        risk_level = "Medium Risk"
-        risk_message = (
-            "This customer shows meaningful churn risk and "
-            "should receive proactive engagement."
-        )
-
-    else:
-
-        risk_level = "Low Risk"
-        risk_message = (
-            "This customer currently shows a relatively low "
-            "likelihood of churn."
-        )
-
-
     col1, col2, col3 = st.columns(3)
 
 
     with col1:
 
         if prediction == 1:
+
             st.error(
                 "⚠️ Customer Likely to Churn"
             )
+
         else:
+
             st.success(
                 "✅ Customer Likely to Stay"
             )
@@ -408,9 +309,7 @@ if predict_button:
         )
 
 
-    st.progress(
-        probability
-    )
+    st.progress(probability)
 
 
     if probability >= 0.75:
@@ -448,176 +347,33 @@ if predict_button:
         </div>
 
         <h2>
-            Why Did the Model Make This Prediction?
+            Why This Prediction?
         </h2>
 
         <p>
-            SHAP values show which customer characteristics had the
-            strongest influence on the model's prediction.
+            Explore which customer characteristics influenced
+            the machine learning model's prediction.
         </p>
 
     </div>
     """)
 
 
-    feature_names = (
-        preprocessor
-        .get_feature_names_out()
-    )
+    if st.button(
+        "🧠 Why This Prediction?",
+        use_container_width=True,
+        key="why_prediction_button"
+    ):
 
-
-    feature_names = [
-        name
-        .replace("onehot__", "")
-        .replace("num__", "")
-        .replace("_", " ")
-        for name in feature_names
-    ]
-
-
-    shap_df = pd.DataFrame({
-        "Feature": feature_names,
-        "SHAP Value": shap_values
-    })
-
-
-    shap_df["Impact"] = (
-        shap_df["SHAP Value"]
-        .abs()
-    )
-
-
-    shap_df = (
-        shap_df
-        .sort_values(
-            "Impact",
-            ascending=False
-        )
-        .head(10)
-    )
-
-
-    fig = px.bar(
-        shap_df.sort_values(
-            "SHAP Value"
-        ),
-        x="SHAP Value",
-        y="Feature",
-        orientation="h",
-        title="Top Factors Influencing This Prediction"
-    )
-
-
-    fig.add_vline(
-        x=0,
-        line_width=1
-    )
-
-
-    fig.update_layout(
-        height=500,
-        xaxis_title="SHAP Impact",
-        yaxis_title="Feature",
-        showlegend=False
-    )
-
-
-    st.plotly_chart(
-        fig,
-        use_container_width=True
-    )
-
-
-    st.divider()
-
-
-    st.html("""
-    <div class="section-heading">
-
-        <div class="section-badge">
-            CHURN DRIVERS
-        </div>
-
-        <h2>
-            Key Factors Behind the Prediction
-        </h2>
-
-    </div>
-    """)
-
-
-    positive = (
-        shap_df[
-            shap_df["SHAP Value"] > 0
-        ]
-        .sort_values(
-            "SHAP Value",
-            ascending=False
-        )
-    )
-
-
-    negative = (
-        shap_df[
-            shap_df["SHAP Value"] < 0
-        ]
-        .sort_values(
-            "SHAP Value"
-        )
-    )
-
-
-    col1, col2 = st.columns(2)
-
-
-    with col1:
-
-        st.subheader(
-            "⚠️ Increasing Churn Risk"
+        st.switch_page(
+            "pages/6_SHAP_Explainability.py"
         )
 
-        if not positive.empty:
 
-            for _, row in positive.head(5).iterrows():
-
-                st.markdown(
-                    f"**{row['Feature']}**  \n"
-                    f"SHAP impact: `{row['SHAP Value']:.3f}`"
-                )
-
-        else:
-
-            st.write(
-                "No major factors increasing churn risk."
-            )
+st.divider()
 
 
-    with col2:
-
-        st.subheader(
-            "🛡️ Reducing Churn Risk"
-        )
-
-        if not negative.empty:
-
-            for _, row in negative.head(5).iterrows():
-
-                st.markdown(
-                    f"**{row['Feature']}**  \n"
-                    f"SHAP impact: `{row['SHAP Value']:.3f}`"
-                )
-
-        else:
-
-            st.write(
-                "No major factors reducing churn risk."
-            )
-
-
-    st.divider()
-
-
-    st.caption(
-        "Prediction powered by machine learning and "
-        "Explainable AI (SHAP)."
-    )
+st.caption(
+    "Prediction powered by machine learning and "
+    "Explainable AI (SHAP)."
+)
