@@ -221,6 +221,7 @@ The platform goes beyond simple prediction by providing:
 - Support batch prediction through CSV upload
 - Deploy the application for public access
 
+---
 
 ## 📊 Dataset
 
@@ -274,7 +275,7 @@ The target represents whether a customer discontinued the service.
 
 - Churn
 
-
+---
 
 
 ## 📓 Machine Learning Notebooks
@@ -298,7 +299,7 @@ The complete machine learning development process is documented through Jupyter 
 | `13_Final_Model_Comparison.ipynb` | Final comparison of tuned models |
 | `14_Model_Explainability_SHAP.ipynb` | SHAP-based model explainability |
 
-
+---
 
 ## 🤖 Model Performance
 
@@ -314,7 +315,6 @@ The following models were evaluated using Accuracy, Precision, Recall, F1 Score 
 | Decision Tree (Tuned) | 0.7839 | 0.6577 | 0.3904 | 0.4899 | 0.8154 |
 | Random Forest (Tuned) | 0.7939 | 0.6579 | 0.4679 | 0.5469 | 0.8318 |
 | XGBoost (Tuned) | 0.7918 | 0.6494 | 0.4706 | 0.5457 | 0.8346 |
-
 
 
 ### 🏆 Best Model
@@ -349,7 +349,7 @@ This allows users to move from:
 to:
 
 > "The model predicts churn because these customer characteristics are contributing to the prediction."
-
+---
 
 ## ⚠️ Customer Risk Classification
 
@@ -363,7 +363,7 @@ Customers are categorized based on predicted churn probability:
 
 The risk classification is intended as a decision-support mechanism rather than a definitive business decision.
 
-
+---
 
 ## 🖥️ Application Pages
 
@@ -434,7 +434,6 @@ Allows users to upload customer CSV data and generate predictions for multiple c
 
 # 15. Technology stack
 
-```markdown
 ## 🛠️ Technology Stack
 
 ### Programming
@@ -475,13 +474,11 @@ Allows users to upload customer CSV data and generate predictions for multiple c
 ### Deployment
 
 - Streamlit Community Cloud
-``` 
 ---
 
 
 ## 📁 Project Structure
 
-```text
 Customer_Churn_Intelligence_Platform/
 │
 ├── app.py
@@ -537,13 +534,11 @@ Customer_Churn_Intelligence_Platform/
     ├── prediction.py
     ├── style.py
     └── visualization.py
-```
 
 ---
 
 # 19. How to use it
 
-```markdown
 ## 📖 How to Use
 
 ### Individual Prediction
@@ -567,7 +562,6 @@ Customer_Churn_Intelligence_Platform/
 5. Review the risk distribution.
 6. Inspect high-risk customers.
 7. Download the prediction results as CSV.
-```
 
 ---
 
@@ -603,6 +597,8 @@ Customer_Churn_Intelligence_Platform/
 
 ![Batch Prediction](assets/images/batch_prediction.png)
 
+---
+
 
 
 ## 🚀 Deployment
@@ -614,7 +610,8 @@ The application is deployed using Streamlit Community Cloud.
 **[Open Customer Churn Intelligence Platform](https://customerchurnintelligenceplatform.streamlit.app/)**
 
 The deployment is connected to the GitHub repository, allowing the application to be updated through repository changes.
-
+ 
+---
 
 
 ## 📈 Key Results
@@ -629,6 +626,8 @@ The machine learning experiments demonstrated that:
 - The final system combines predictive modeling with an interactive business-facing interface.
 
 
+---
+
 
 ## ⚠️ Limitations
 
@@ -641,7 +640,7 @@ The machine learning experiments demonstrated that:
 
 
 
-
+---
 
 ## 🔮 Future Improvements
 
@@ -662,7 +661,7 @@ Potential future enhancements include:
 - REST API for prediction services
 - Advanced business dashboards
 
-
+---
 
 ## 🎓 Learning Outcomes
 
@@ -684,7 +683,7 @@ Through this project, I gained practical experience in:
 - Machine learning deployment
 
 
-
+---
 
 ## 👨‍💻 Author
 
@@ -693,6 +692,8 @@ Through this project, I gained practical experience in:
 B.Tech — Information Technology
 
 Interested in Machine Learning, Artificial Intelligence, Data Science and AI Engineering.
+
+---
 
 ### 🔗 Links
 
