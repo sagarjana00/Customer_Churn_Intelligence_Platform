@@ -475,7 +475,7 @@ Allows users to upload customer CSV data and generate predictions for multiple c
 ### Deployment
 
 - Streamlit Community Cloud
-
+``` 
 ---
 
 
@@ -567,7 +567,9 @@ Customer_Churn_Intelligence_Platform/
 5. Review the risk distribution.
 6. Inspect high-risk customers.
 7. Download the prediction results as CSV.
+```
 
+---
 
 
 
