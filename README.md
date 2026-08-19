@@ -185,30 +185,10 @@ Customer Prediction
 Batch Prediction
             ↓
 Streamlit Deployment
+```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ## 🎯 Problem Statement
 
@@ -416,7 +396,7 @@ Explains the factors influencing the previously generated customer prediction.
 Allows users to upload customer CSV data and generate predictions for multiple customers.
 
 
-
+---
 
 
 ## 🏗️ Application Architecture
@@ -447,7 +427,7 @@ Allows users to upload customer CSV data and generate predictions for multiple c
           │
           ▼
        Business Insight
-
+```
 
 
 
@@ -498,7 +478,7 @@ Allows users to upload customer CSV data and generate predictions for multiple c
 
 - Streamlit Community Cloud
 
-
+---
 
 
 ## 📁 Project Structure
@@ -559,11 +539,7 @@ Customer_Churn_Intelligence_Platform/
     ├── prediction.py
     ├── style.py
     └── visualization.py
-
-
----
-
-
+```
 
 ---
 
