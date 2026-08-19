@@ -396,7 +396,6 @@ Explains the factors influencing the previously generated customer prediction.
 Allows users to upload customer CSV data and generate predictions for multiple customers.
 
 
----
 
 
 ## 🏗️ Application Architecture
@@ -432,7 +431,6 @@ Allows users to upload customer CSV data and generate predictions for multiple c
 
 
    
----
 
 # 15. Technology stack
 
