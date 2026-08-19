@@ -4,6 +4,22 @@ An end-to-end machine learning platform for **customer churn prediction, explain
 
 The project takes the complete machine learning workflow from data understanding and exploratory analysis to feature engineering, model training, hyperparameter tuning, model comparison, explainability, and deployment as an interactive Streamlit application.
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"/>
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"/>
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/XGBoost-016C59?style=for-the-badge&logo=xgboost&logoColor=white" alt="XGBoost"/>
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit"/>
+  <img src="https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly"/>
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white" alt="Matplotlib"/>
+  <img src="https://img.shields.io/badge/SHAP-8A2BE2?style=for-the-badge&logo=probot&logoColor=white" alt="SHAP"/>
+  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter"/>
+  <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Code"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+</p>
+
 ## 🚀 Live Application
 
 🔗 **[Customer Churn Intelligence Platform](https://customerchurnintelligenceplatform.streamlit.app/)**
@@ -27,10 +43,7 @@ For complete instructions on setting up the project locally, installing dependen
 
 👉 **[Read the Complete Setup Guide](SETUP.md)**
 
-
 ---
-
-
 
 # 🎯 Project Overview
 
@@ -187,7 +200,6 @@ Batch Prediction
 Streamlit Deployment
 ```
 
-
 ---
 
 ## 🎯 Problem Statement
@@ -204,7 +216,6 @@ The platform goes beyond simple prediction by providing:
 - Interactive customer analytics
 - SHAP-based prediction explanations
 - Batch prediction for multiple customers
-
 
 ## 🎯 Project Objectives
 
@@ -237,9 +248,6 @@ The target represents whether a customer discontinued the service.
 
 - `Yes` → Customer churned
 - `No` → Customer did not churn
-
-
-
 
 ## 🧾 Dataset Features
 
@@ -276,7 +284,6 @@ The target represents whether a customer discontinued the service.
 - Churn
 
 ---
-
 
 ## 📓 Machine Learning Notebooks
 
@@ -316,7 +323,6 @@ The following models were evaluated using Accuracy, Precision, Recall, F1 Score 
 | Random Forest (Tuned) | 0.7939 | 0.6579 | 0.4679 | 0.5469 | 0.8318 |
 | XGBoost (Tuned) | 0.7918 | 0.6494 | 0.4706 | 0.5457 | 0.8346 |
 
-
 ### 🏆 Best Model
 
 Based on ROC-AUC, the tuned XGBoost model achieved the highest score:
@@ -325,8 +331,7 @@ Based on ROC-AUC, the tuned XGBoost model achieved the highest score:
 
 Therefore, the tuned XGBoost model was selected as the best-performing model for the deployed prediction system.
 
-
-
+---
 
 ## 🧠 Explainable AI
 
@@ -349,6 +354,7 @@ This allows users to move from:
 to:
 
 > "The model predicts churn because these customer characteristics are contributing to the prediction."
+
 ---
 
 ## ⚠️ Customer Risk Classification
@@ -395,8 +401,7 @@ Explains the factors influencing the previously generated customer prediction.
 
 Allows users to upload customer CSV data and generate predictions for multiple customers.
 
-
-
+---
 
 ## 🏗️ Application Architecture
 
@@ -428,57 +433,26 @@ Allows users to upload customer CSV data and generate predictions for multiple c
        Business Insight
 ```
 
-
-
-   
-
-# 15. Technology stack
+---
 
 ## 🛠️ Technology Stack
 
-### Programming
+| Category | Technologies |
+|---|---|
+| **Programming** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) |
+| **Data Analysis** | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) |
+| **Visualization** | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square&logo=python&logoColor=white) ![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=flat-square&logo=python&logoColor=white) ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white) |
+| **Machine Learning** | ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white) ![XGBoost](https://img.shields.io/badge/XGBoost-016C59?style=flat-square&logo=xgboost&logoColor=white) |
+| **Explainable AI** | ![SHAP](https://img.shields.io/badge/SHAP-8A2BE2?style=flat-square&logo=probot&logoColor=white) |
+| **Application** | ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) |
+| **Development** | ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white) ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white) |
+| **Deployment** | ![Streamlit Cloud](https://img.shields.io/badge/Streamlit%20Cloud-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) |
 
-- Python
-
-### Data Analysis
-
-- Pandas
-- NumPy
-
-### Visualization
-
-- Matplotlib
-- Seaborn
-- Plotly
-
-### Machine Learning
-
-- Scikit-learn
-- XGBoost
-
-### Explainable AI
-
-- SHAP
-
-### Application
-
-- Streamlit
-
-### Development
-
-- Jupyter Notebook
-- VS Code
-- Git
-- GitHub
-
-### Deployment
-
-- Streamlit Community Cloud
 ---
-
 
 ## 📁 Project Structure
 
+```text
 Customer_Churn_Intelligence_Platform/
 │
 ├── app.py
@@ -534,10 +508,9 @@ Customer_Churn_Intelligence_Platform/
     ├── prediction.py
     ├── style.py
     └── visualization.py
+```
 
 ---
-
-# 19. How to use it
 
 ## 📖 How to Use
 
@@ -564,8 +537,6 @@ Customer_Churn_Intelligence_Platform/
 7. Download the prediction results as CSV.
 
 ---
-
-
 
 ## 📸 Application Screenshots
 
@@ -599,8 +570,6 @@ Customer_Churn_Intelligence_Platform/
 
 ---
 
-
-
 ## 🚀 Deployment
 
 The application is deployed using Streamlit Community Cloud.
@@ -610,9 +579,8 @@ The application is deployed using Streamlit Community Cloud.
 **[Open Customer Churn Intelligence Platform](https://customerchurnintelligenceplatform.streamlit.app/)**
 
 The deployment is connected to the GitHub repository, allowing the application to be updated through repository changes.
- 
----
 
+---
 
 ## 📈 Key Results
 
@@ -625,9 +593,7 @@ The machine learning experiments demonstrated that:
 - SHAP was integrated to improve interpretability of individual predictions.
 - The final system combines predictive modeling with an interactive business-facing interface.
 
-
 ---
-
 
 ## ⚠️ Limitations
 
@@ -637,8 +603,6 @@ The machine learning experiments demonstrated that:
 - Risk thresholds are configurable decision-support thresholds rather than universal business standards.
 - The application does not automatically connect to a live CRM or customer database.
 - SHAP explanations describe model behavior and should not be interpreted as causal relationships.
-
-
 
 ---
 
@@ -682,7 +646,6 @@ Through this project, I gained practical experience in:
 - Git and GitHub workflow
 - Machine learning deployment
 
-
 ---
 
 ## 👨‍💻 Author
@@ -693,10 +656,8 @@ B.Tech — Information Technology
 
 Interested in Machine Learning, Artificial Intelligence, Data Science and AI Engineering.
 
----
-
 ### 🔗 Links
 
-- GitHub: https://github.com/sagarjana00
-- Project Repository: https://github.com/sagarjana00/Customer_Churn_Intelligence_Platform
-- Live Application: https://customerchurnintelligenceplatform.streamlit.app/
+- GitHub: [github.com/sagarjana00](https://github.com/sagarjana00)
+- Project Repository: [Customer_Churn_Intelligence_Platform](https://github.com/sagarjana00/Customer_Churn_Intelligence_Platform)
+- Live Application: [customerchurnintelligenceplatform.streamlit.app](https://customerchurnintelligenceplatform.streamlit.app/)
